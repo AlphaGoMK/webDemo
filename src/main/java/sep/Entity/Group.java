@@ -3,15 +3,39 @@ package sep.Entity;
 import java.io.File;
 import java.util.*;
 
+class MySubmit{
+    private Date date;
+    private String path;
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
+    }
+
+    public String getPath() {
+        return path;
+    }
+
+    public void setPath(String path) {
+        this.path = path;
+    }
+}
+
+
 public class Group {
     private int groupId;
     private double totalscore=-1;
-    private String coursename;
-    private Map<String, String> submitpath=new HashMap<String, String>();  // homework name - submitted path
-    // stuId-contribution, use softmax to calc
+    private int courseID;
+    private int leaderId;
+    private String contact;
+    private Map<String, MySubmit> submit=new HashMap<String, MySubmit>();  // homework name - submitted path
+    // stuId-contribution, final-term
     private Map<Integer, Double> contrib=new HashMap<Integer, Double>();
     private Set<Integer> stulist=new HashSet<Integer>();
-    // homework name - score
+    // homework name - score, homework-wise
     private Map<String, Double> score=new HashMap<String, Double>();
 
     public int getGroupId() {
@@ -46,26 +70,33 @@ public class Group {
     }
 
 
-    public Map<String, String> getSubmitpath() {
-        return submitpath;
+    public Map<String, MySubmit> getSubmit() {
+        return submit;
     }
-    public void setSubmitpath(Map<String, String> submitpath) {
-        this.submitpath = submitpath;
+    public void setSubmit(Map<String, MySubmit> submit) {
+        this.submit = submit;
     }
-    public String getPathByName(String name){
-        return submitpath.get(name);
+    public Date getSubmitTimeByName(String name){
+        return submit.get(name).getDate();
+    }
+    public String getSubmitPathByName(String name){
+        return submit.get(name).getPath();
     }
     public boolean containSubmit(String name){  // check homework is submitted or not
-        return submitpath.containsKey(name);
+        return submit.containsKey(name);
     }
     public int getSubmitNum(){
-        return submitpath.size();
+        return submit.size();
     }
     public void addSubmit(String name, String path){    // add & modify
-        submitpath.put(name,path);
+        MySubmit tmp=new MySubmit();
+        Date cur=new Date();
+        tmp.setDate(cur);
+        tmp.setPath(path);
+        submit.put(name,tmp);
     }
     public void removeSubmit(String name){
-        submitpath.remove(name);
+        submit.remove(name);
     }
 
 
@@ -110,14 +141,35 @@ public class Group {
     public void addScore(String hname, Double subscore){
         score.put(hname,subscore);
     }
-
-
-    public String getCoursename() {
-        return coursename;
+    public void calcAvg(){
+        Set<String> tmps=score.keySet();
+        Iterator<String> it=tmps.iterator();
+        double sum=0;
+        while(it.hasNext()){
+            String key=it.next();
+            sum+=score.get(key);
+        }
+        if(getScoreNum()!=0) totalscore=sum/getScoreNum();
     }
-    public void setCoursename(String coursename) {
-        this.coursename = coursename;
+
+    public int getLeaderId() {
+        return leaderId;
+    }
+    public void setLeaderId(int leaderId) {
+        this.leaderId = leaderId;
     }
 
+    public String getContact() {
+        return contact;
+    }
+    public void setContact(String contact) {
+        this.contact = contact;
+    }
 
+    public int getCourseID() {
+        return courseID;
+    }
+    public void setCourseID(int courseID) {
+        this.courseID = courseID;
+    }
 }

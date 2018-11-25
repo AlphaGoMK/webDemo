@@ -7,7 +7,7 @@ import java.util.Set;
 public class Teacher {
     private int teacherId;
     private String name;
-    private Set<String> courseset=new HashSet<String>();
+    private Set<Integer> courseset=new HashSet<Integer>();
 
     public int getTeacherId() {
         return teacherId;
@@ -24,25 +24,25 @@ public class Teacher {
     }
 
 
-    public Set<String> getCourseset() {
+    public Set<Integer> getCourseset() {
         return courseset;
     }
-    public void setCourseset(Set<String> courseset) {
+    public void setCourseset(Set<Integer> courseset) {
         this.courseset = courseset;
     }
     public void clearCourse(){
         courseset.clear();
     }
-    public boolean containCourse(String course){
+    public boolean containCourse(Integer course){
         return courseset.contains(course);
     }
     public int getCourseNum(){
         return courseset.size();
     }
-    public void addCourse(String course){
+    public void addCourse(Integer course){
         courseset.add(course);
     }
-    public void removeCourse(String course){
+    public void removeCourse(Integer course){
         if(courseset.contains(course)) courseset.remove(course);
     }
 
@@ -61,9 +61,9 @@ public class Teacher {
         if(teacherId!=teacher.teacherId) return false;
         if(name!=null?!name.equals(teacher.name):teacher.name!=null) return false;
 
-        Iterator<String> courseit=courseset.iterator();
+        Iterator<Integer> courseit=courseset.iterator();
         while(courseit.hasNext()){
-            String c=courseit.next();
+            Integer c=courseit.next();
             if(!teacher.courseset.contains(c)) return false;
         }
 

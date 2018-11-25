@@ -11,9 +11,10 @@ public class Student {
     private String name;
     private double score;
     private String classid;
-    // course - groupId
-    private Map<String, Integer> groupmap=new HashMap<String, Integer>();
-    private Set<String> courseset=new HashSet<String>();
+    private String password;
+    // courseId - groupId
+    private Map<Integer, Integer> groupmap=new HashMap<Integer, Integer>();
+    private Set<Integer> courseset=new HashSet<Integer>();
 
 
     public int getStuId(){
@@ -45,43 +46,43 @@ public class Student {
     }
 
 
-    public Map<String, Integer> getGroupmap(){
+    public Map<Integer, Integer> getGroupmap(){
         return groupmap;
     }
-    public void setGroupmap(Map<String, Integer> groupmap){
+    public void setGroupmap(Map<Integer, Integer> groupmap){
         this.groupmap=groupmap;
     }
     public void clearGroupmap(){
         groupmap.clear();
     }
-    public int getGroupId(String course){
+    public int getGroupId(Integer course){
         if(groupmap.containsKey(course)) return groupmap.get(course);
         else return -1;
     }
-    public void setGroupId(String course, int Id){
+    public void setGroupId(Integer course, int Id){
         groupmap.put(course, Id);
     }
 
 
-    public Set<String> getCourseset(){
+    public Set<Integer> getCourseset(){
         return courseset;
     }
-    public void setCourseset(Set<String> courseset){
+    public void setCourseset(Set<Integer> courseset){
         this.courseset=courseset;
     }
     public void clearCourseset(){
         courseset.clear();
     }
-    public boolean containCourse(String course){
+    public boolean containCourse(Integer course){
         return courseset.contains(course);
     }
     public int getCourseNum(){
         return courseset.size();
     }
-    public void addCourse(String course){
+    public void addCourse(Integer course){
         courseset.add(course);
     }
-    public void removeCourse(String course){
+    public void removeCourse(Integer course){
         if(courseset.contains(course)) courseset.remove(course);
         if(groupmap.containsKey(course)) groupmap.remove(course);
     }
@@ -103,22 +104,29 @@ public class Student {
         if(abs(score-student.score)>1e-4) return false;
         if(classid!=null?!classid.equals(student.classid):student.classid!=null) return false;
 
-        Set<String> keySet=groupmap.keySet();
-        Set<String> stuKeySet=student.groupmap.keySet();
+        Set<Integer> keySet=groupmap.keySet();
+        Set<Integer> stuKeySet=student.groupmap.keySet();
         if(keySet.size()!=stuKeySet.size()) return false;
-        Iterator<String> it=keySet.iterator();
+        Iterator<Integer> it=keySet.iterator();
         while(it.hasNext()){
-            String key=it.next();
-            if(groupmap.get(key).equals(student.groupmap.get(key))) return false;
+            Integer key=it.next();
+            if(groupmap.get(key)==student.groupmap.get(key)) return false;
         }
 
-        Iterator<String> courseit=courseset.iterator();
+        Iterator<Integer> courseit=courseset.iterator();
         while(courseit.hasNext()){
-            String c=courseit.next();
+            Integer c=courseit.next();
             if(!student.courseset.contains(c)) return false;
         }
 
         return true;
     }
 
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
 }
