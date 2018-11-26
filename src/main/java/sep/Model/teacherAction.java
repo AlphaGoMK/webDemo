@@ -1,18 +1,22 @@
 package sep.Model;
+import javafx.util.Pair;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
+import sep.Entity.Course;
 
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.Iterator;
 import java.util.List;
 
 class ExcelInfo {
     private int index;
-    private String id;
+    private int id;
 
     public int getIndex() {
         return index;
@@ -20,10 +24,10 @@ class ExcelInfo {
     public void setIndex(int index) {
         this.index = index;
     }
-    public String getId() {
-        return ip;
+    public int getId() {
+        return id;
     }
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -31,7 +35,7 @@ class ExcelInfo {
     public String toString() {
         return "ExcelInfo{" +
             "index=" + index +
-            ", id='" + id + 
+            ", id='" + id +
             '}';
     }
 }
@@ -60,7 +64,7 @@ class ExcelDemo{
                 }
                 ExcelInfo eInfo = new ExcelInfo();
                 eInfo.setIndex(row.getRowNum());
-                eInfo.setId(row.getCell(0).getStringCellValue());
+                eInfo.setId(Integer.parseInt(row.getCell(0).getStringCellValue()));
                 //eInfo.setCommunity(row.getCell(1).getStringCellValue());
                 result.add(eInfo);
             }
@@ -79,14 +83,19 @@ class ExcelDemo{
 }
 public class teacherAction {
 
-    courseAction courseaction=new courseAction();
+    private courseAction courseaction=new courseAction();
 
     public void setCourse(int name, int id, String desc, int teacherId){
-        courseaction.setCourse(int name, int id, String desc, int teacherId);
+        courseaction.setCourse(name, id, desc, teacherId);
     }
 
     public void setStuList(int courseId, String path){
-        List<ExcelInfo> res=ExcelDemo.importExcel(path);
+        List<ExcelInfo> res=new ArrayList<ExcelInfo>();
+        try{
+            res=ExcelDemo.importExcel(path);
+        }catch(Exception e){
+            e.printStackTrace();
+        }
         Iterator<ExcelInfo> it=res.iterator();
         while(it.hasNext()){
             ExcelInfo tmp=it.next();
@@ -100,17 +109,17 @@ public class teacherAction {
 
     public void addHomework(int courseId, String name, String content, Date deadline, double percentage){
         Course c=courseaction.getCourseById(courseId);
-        c.addHomework(name, content, deadline, percentage);
+        c.addHome(name, content, deadline, percentage);
     }
 
-    public String Pair<Date, String>(int courseId, String grpId, String homework){
-        return Pair<Date, String>(courseaction.getCourseById(courseId).getGrpById(grpId).getSubmitTimeByName(homework), 
+    public Pair<Date, String> getSubmit(int courseId, String grpId, String homework){
+        return new Pair<Date, String>(courseaction.getCourseById(courseId).getGrpById(grpId).getSubmitTimeByName(homework),
                                     courseaction.getCourseById(courseId).getGrpById(grpId).getSubmitPathByName(homework));
         
     }
     public void rankHomework(int courseId, String grpId, String homework, double grade){
 
-        return courseaction.getCourseById(courseId).getGrpById(grpId).addScore(homework, grade);
+        courseaction.getCourseById(courseId).getGrpById(grpId).addScore(homework, grade);
     }
 
     public void getStuList(){

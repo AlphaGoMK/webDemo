@@ -38,7 +38,7 @@ public class Group {
     // homework name - score, homework-wise
     private Map<String, Double> score=new HashMap<String, Double>();
 
-    public int getGroupId() {
+    public String getGroupId() {
         return groupId;
     }
     public void setGroupId(String groupId) {

@@ -89,7 +89,7 @@ public class Course {
         Iterator<Group> it=grp.iterator();
         while(it.hasNext()){
             res=it.next();
-            if(res.getGroupId().equal(grpId)){
+            if(res.getGroupId().equals(grpId)){
                 return res;
             }
         }
