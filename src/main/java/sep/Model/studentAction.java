@@ -11,6 +11,8 @@ import java.util.*;
 
 public class studentAction {
 
+    private courseAction courseaction=new courseAction();
+
     public static Student getStuById(int stuId){
         // TODO: DAO
         return null;
@@ -67,7 +69,7 @@ public class studentAction {
 
     public void createGroup(int stuId, int courseId, String contact){
         Group grp=new Group();
-        String groupId=calcGrpId(getStuById(stuId).getClassid, courseId);
+        String groupId=calcGrpId(getStuById(stuId).getClassid(), courseId);
         grp.setCourseID(courseId);
         grp.setLeaderId(stuId);
         grp.setGroupId(groupId);

@@ -13,7 +13,7 @@ public class Student {
     private String classid;
     private String password;
     // courseId - groupId
-    private Map<Integer, String> groupmap=new HashMap<Integer, Integer>();
+    private Map<Integer, String> groupmap=new HashMap<Integer, String>();
     private Set<Integer> courseset=new HashSet<Integer>();
 
 
@@ -46,10 +46,10 @@ public class Student {
     }
 
 
-    public Map<Integer, Integer> getGroupmap(){
+    public Map<Integer, String> getGroupmap(){
         return groupmap;
     }
-    public void setGroupmap(Map<Integer, Integer> groupmap){
+    public void setGroupmap(Map<Integer, String> groupmap){
         this.groupmap=groupmap;
     }
     public void clearGroupmap(){
