@@ -10,6 +10,14 @@ public class Homework {
     private Date deadline;
     private double percentage;
 
+    public Homework(String name, String coursename, String content, Date deadline, double percentage){
+        this.name=name;
+        this.coursename=coursename;
+        this.content=content;
+        this.assigntime=new Date();
+        this.deadline=deadline;
+        this.percentage=percentage;
+    }
     public String getName() {
         return name;
     }

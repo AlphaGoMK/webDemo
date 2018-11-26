@@ -13,7 +13,7 @@ public class Student {
     private String classid;
     private String password;
     // courseId - groupId
-    private Map<Integer, Integer> groupmap=new HashMap<Integer, Integer>();
+    private Map<Integer, String> groupmap=new HashMap<Integer, Integer>();
     private Set<Integer> courseset=new HashSet<Integer>();
 
 
@@ -55,11 +55,11 @@ public class Student {
     public void clearGroupmap(){
         groupmap.clear();
     }
-    public int getGroupId(Integer course){
+    public String getGroupId(Integer course){
         if(groupmap.containsKey(course)) return groupmap.get(course);
-        else return -1;
+        else return null;
     }
-    public void setGroupId(Integer course, int Id){
+    public void setGroupId(Integer course, String Id){
         groupmap.put(course, Id);
     }
 

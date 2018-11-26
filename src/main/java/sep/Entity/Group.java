@@ -26,12 +26,12 @@ class MySubmit{
 
 
 public class Group {
-    private int groupId;
+    private String groupId;
     private double totalscore=-1;
     private int courseID;
     private int leaderId;
     private String contact;
-    private Map<String, MySubmit> submit=new HashMap<String, MySubmit>();  // homework name - submitted path
+    private Map<String, MySubmit> submit=new HashMap<String, MySubmit>();  // homework name - submitted path    submitted homework
     // stuId-contribution, final-term
     private Map<Integer, Double> contrib=new HashMap<Integer, Double>();
     private Set<Integer> stulist=new HashSet<Integer>();
@@ -41,7 +41,7 @@ public class Group {
     public int getGroupId() {
         return groupId;
     }
-    public void setGroupId(int groupId) {
+    public void setGroupId(String groupId) {
         this.groupId = groupId;
     }
 

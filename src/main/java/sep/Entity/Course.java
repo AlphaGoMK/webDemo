@@ -8,11 +8,12 @@ public class Course {
     private int courseId;
     private Date date=new Date();   // current time
     private String description;
-    private String teachername;
-    private List<Homework> homework=new ArrayList<Homework>();
+    private int teacherid;
+    private List<Homework> homework=new ArrayList<Homework>();  // requested 
     private int maxcrew;
     private int mincrew;
     private Set<Group> grp=new HashSet<Group>();
+    private String grpPrefix;
 
     public int getCourseId() {
         return courseId;
@@ -42,11 +43,18 @@ public class Course {
         this.description = description;
     }
 
-    public String getTeachername() {
-        return teachername;
+    public int getTeacherid() {
+        return teacherid;
     }
-    public void setTeachername(String teachername) {
-        this.teachername = teachername;
+    public void setTeacherid(int teacherid) {
+        this.teacherid = teacherid;
+    }
+
+    public int getGrpPrefix() {
+        return teacherid;
+    }
+    public void setGrpPrefix(String grpPrefix) {
+        this.grpPrefix=grpPrefix;
     }
 
     public int getMaxcrew() {
@@ -76,12 +84,12 @@ public class Course {
     public int getGrpNum(){
         return grp.size();
     }
-    public Group getGrpById(int grpId){
+    public Group getGrpById(String grpId){
         Group res;
         Iterator<Group> it=grp.iterator();
         while(it.hasNext()){
             res=it.next();
-            if(res.getGroupId()==grpId){
+            if(res.getGroupId().equal(grpId)){
                 return res;
             }
         }
@@ -90,7 +98,7 @@ public class Course {
     public void addGrp(Group group){
         grp.add(group);
     }
-    public void removeGrpById(int grpId){
+    public void removeGrpById(String grpId){
         Group tmp=getGrpById(grpId);
         grp.remove(tmp);
     }
@@ -120,7 +128,8 @@ public class Course {
     public Homework getHomeByIdx(int index){
         return homework.get(index);
     }
-    public void addHome(Homework h){
+    public void addHome(String name, String content, Date deadline, double percentage){
+        Homework h=new Homework(name, this.name, content, deadline, percentage);
         homework.add(h);
     }
     public void removeHomeByName(String hname){
@@ -133,7 +142,7 @@ public class Course {
     }
 
 
-    public double getScoreById(int stuId, int grpId){
+    public double getScoreById(int stuId, String grpId){
         Group g=getGrpById(grpId);
         double grpscore=0.0,sumpercent=0.0;
         for(int i=0;i<getHomeNum();i++){
