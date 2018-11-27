@@ -8,12 +8,30 @@
     <package name = "sep" extends = "struts-default">
 
         <action name = "hello"
-                class = "com.sep.Action.HelloWorldAction"
-                method = "execute">
+                class = "sep.Action.HelloWorldAction">
             <result name = "success">/HelloWorld.jsp</result>
         </action>
 
-    <-- more actions can be listed here -->
+        <action name="login"
+                class="sep.Action.LoginAction">
+            <result name = "success">/index.jsp</result>
+        </action>
+
+        <action name="index"
+                class="sep.Action.IndexAction">
+            <result name="1">/buzhi.jsp</result>
+            <result name="2">/stulook.jsp</result>
+            <result name="3">/upload.jsp</result>
+            <result name="4">/checkhome.jsp</result>
+            <result name="5">/scorehome.jsp</result>
+            <result name="6">/liststu.jsp</result>
+            <result name="7">/quit.jsp</result>
+        </action>
+
+        <action name="Upload" class="sep.Action.UploadAction">
+            <result name="success">/success.jsp</result>
+            <result name="error">/error.jsp</result>
+        </action>
 
     </package>
     <-- more packages can be listed here -->

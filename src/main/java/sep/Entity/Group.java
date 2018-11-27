@@ -1,5 +1,7 @@
 package sep.Entity;
 
+import javafx.util.Pair;
+
 import java.io.File;
 import java.util.*;
 
@@ -81,6 +83,18 @@ public class Group {
     }
     public String getSubmitPathByName(String name){
         return submit.get(name).getPath();
+    }
+    public List<String> getUnrankedSubmit(){
+        Set<String> skey=submit.keySet();
+        Iterator<String> it=skey.iterator();
+        List<String> res=new ArrayList<String>();
+        while(it.hasNext()){
+            String key=it.next();
+            if(!score.containsKey(key)) {
+                res.add(key);
+            }
+        }
+        return res;
     }
     public boolean containSubmit(String name){  // check homework is submitted or not
         return submit.containsKey(name);

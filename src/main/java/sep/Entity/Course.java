@@ -129,7 +129,7 @@ public class Course {
         return homework.get(index);
     }
     public void addHome(String name, String content, Date deadline, double percentage){
-        Homework h=new Homework(name, this.name, content, deadline, percentage);
+        Homework h=new Homework(name, this.courseId, content, deadline, percentage);
         homework.add(h);
     }
     public void removeHomeByName(String hname){
