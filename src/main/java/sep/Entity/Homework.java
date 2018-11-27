@@ -4,15 +4,15 @@ import java.util.Date;
 
 public class Homework {
     private String name;
-    private String coursename;
+    private int courseid;
     private String content;
     private Date assigntime;
     private Date deadline;
     private double percentage;
 
-    public Homework(String name, String coursename, String content, Date deadline, double percentage){
+    public Homework(String name, int courseid, String content, Date deadline, double percentage){
         this.name=name;
-        this.coursename=coursename;
+        this.courseid=courseid;
         this.content=content;
         this.assigntime=new Date();
         this.deadline=deadline;
@@ -26,12 +26,12 @@ public class Homework {
         this.name = name;
     }
 
-    public String getCoursename() {
-        return coursename;
+    public int getCourseid() {
+        return courseid;
     }
 
-    public void setCoursename(String coursename) {
-        this.coursename = coursename;
+    public void setCourseid(int courseid) {
+        this.courseid = courseid;
     }
 
     public String getContent() {

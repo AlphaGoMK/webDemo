@@ -63,7 +63,6 @@ public class Student {
         groupmap.put(course, Id);
     }
 
-
     public Set<Integer> getCourseset(){
         return courseset;
     }
