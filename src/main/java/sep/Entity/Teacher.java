@@ -9,6 +9,11 @@ public class Teacher {
     private String name;
     private Set<Integer> courseset=new HashSet<Integer>();
 
+    public Teacher(){}
+    public Teacher(String teacherName){
+        this.name=teacherName;
+    }
+
     public int getTeacherId() {
         return teacherId;
     }
@@ -22,7 +27,6 @@ public class Teacher {
     public void setName(String name) {
         this.name = name;
     }
-
 
     public Set<Integer> getCourseset() {
         return courseset;

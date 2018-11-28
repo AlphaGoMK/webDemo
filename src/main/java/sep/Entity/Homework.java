@@ -4,20 +4,23 @@ import java.util.Date;
 
 public class Homework {
     private String name;
-    private String coursename;
+    private Integer courseId;
     private String content;
     private Date assigntime;
     private Date deadline;
     private double percentage;
+    private int id;
 
-    public Homework(String name, String coursename, String content, Date deadline, double percentage){
+    public Homework(){}
+    public Homework(String name, Integer courseId, String content, Date deadline, double percentage){
         this.name=name;
-        this.coursename=coursename;
+        this.courseId=courseId;
         this.content=content;
         this.assigntime=new Date();
         this.deadline=deadline;
         this.percentage=percentage;
     }
+
     public String getName() {
         return name;
     }
@@ -26,12 +29,12 @@ public class Homework {
         this.name = name;
     }
 
-    public String getCoursename() {
-        return coursename;
+    public Integer getCourseId() {
+        return courseId;
     }
 
-    public void setCoursename(String coursename) {
-        this.coursename = coursename;
+    public void setCourseId(Integer courseId) {
+        this.courseId = courseId;
     }
 
     public String getContent() {
@@ -65,4 +68,8 @@ public class Homework {
     public void setPercentage(double percentage) {
         this.percentage = percentage;
     }
+
+    public Integer getId(){return id;}
+
+    public void setId(Integer id) { this.id = id;}
 }
