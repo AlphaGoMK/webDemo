@@ -2,7 +2,7 @@ package sep.Action;
 
 import com.opensymphony.xwork2.ActionSupport;
 import sep.Entity.Homework;
-import sep.Model.courseAction;
+import sep.Model.courseOps;
 
 import java.util.Date;
 
@@ -15,7 +15,7 @@ public class BuzhiHomeAction extends ActionSupport {
     private String content;
     private Date deadline;
     private double percentage;
-    private courseAction courseaction=new courseAction();
+    private courseOps courseaction=new courseOps();
 
     public String execute() throws Exception{
 

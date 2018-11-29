@@ -1,7 +1,6 @@
 package sep.Model;
 
 import javafx.util.Pair;
-import org.apache.struts2.components.Submit;
 import sep.Entity.Course;
 import sep.Entity.Group;
 import sep.Entity.Homework;
@@ -9,9 +8,9 @@ import sep.Entity.Student;
 
 import java.util.*;
 
-public class studentAction {
+public class studentOps {
 
-    private courseAction courseaction=new courseAction();
+    private courseOps courseaction=new courseOps();
 
     public static Student getStuById(int stuId){
         // TODO: DAO

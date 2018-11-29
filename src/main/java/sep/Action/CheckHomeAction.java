@@ -1,10 +1,8 @@
 package sep.Action;
 
 import com.opensymphony.xwork2.ActionSupport;
-import sep.Entity.Homework;
-import sep.Model.courseAction;
+import sep.Model.courseOps;
 
-import java.util.Date;
 import java.util.List;
 
 // display unranked group homework
@@ -15,7 +13,7 @@ public class CheckHomeAction extends ActionSupport {
 
     // set
     private List<String> unrankedhome;
-    private courseAction courseaction=new courseAction();
+    private courseOps courseaction=new courseOps();
 
     @Override
     public String execute() throws Exception{

@@ -2,7 +2,7 @@ package sep.Action;
 
 import com.opensymphony.xwork2.ActionSupport;
 import sep.Entity.Homework;
-import sep.Model.studentAction;
+import sep.Model.studentOps;
 
 import java.util.Date;
 
@@ -19,7 +19,7 @@ public class StuLookHomeAction extends ActionSupport {
     private Date deadline;
     private double percentage;
 
-    private studentAction studentaction = new studentAction();
+    private studentOps studentaction = new studentOps();
 
     public int getCourseId() {
         return courseId;

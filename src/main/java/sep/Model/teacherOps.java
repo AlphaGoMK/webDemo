@@ -6,7 +6,6 @@ import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import sep.Entity.Course;
 
-import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -81,9 +80,9 @@ class ExcelDemo{
     }
 
 }
-public class teacherAction {
+public class teacherOps {
 
-    private courseAction courseaction=new courseAction();
+    private courseOps courseaction=new courseOps();
 
     public void setCourse(int name, int id, String desc, int teacherId){
         courseaction.setCourse(name, id, desc, teacherId);
@@ -99,7 +98,7 @@ public class teacherAction {
         Iterator<ExcelInfo> it=res.iterator();
         while(it.hasNext()){
             ExcelInfo tmp=it.next();
-            studentAction.getStuById(tmp.getId()).addCourse(courseId);
+            studentOps.getStuById(tmp.getId()).addCourse(courseId);
         }
     }
 

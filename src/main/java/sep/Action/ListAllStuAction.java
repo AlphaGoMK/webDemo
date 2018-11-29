@@ -2,14 +2,14 @@ package sep.Action;
 
 import com.opensymphony.xwork2.ActionSupport;
 import sep.Entity.Group;
-import sep.Model.courseAction;
+import sep.Model.courseOps;
 
 import java.util.*;
 
 // stu&group
 public class ListAllStuAction extends ActionSupport {
     private int courseId;
-    private courseAction courseaction=new courseAction();
+    private courseOps courseaction=new courseOps();
     private Map<String, Set<Integer>> stulist;
     private List<String> grpname;
 

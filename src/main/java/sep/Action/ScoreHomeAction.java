@@ -1,9 +1,8 @@
 package sep.Action;
 
 import com.opensymphony.xwork2.ActionSupport;
-import sep.Entity.Group;
 import sep.Entity.Homework;
-import sep.Model.courseAction;
+import sep.Model.courseOps;
 
 // rank group homework
 public class ScoreHomeAction extends ActionSupport {
@@ -12,7 +11,7 @@ public class ScoreHomeAction extends ActionSupport {
     private int courseId;
     private Homework homework;
     private String grpid;
-    private courseAction courseaction=new courseAction();
+    private courseOps courseaction=new courseOps();
 
     @Override
     public String execute() throws Exception{
